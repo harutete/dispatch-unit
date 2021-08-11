@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "fix": "prettier -w ./src/**/*.{ts,tsx}",
+    "fix": "prettier -w './src/**/*.{ts,tsx}'",
     "prepare": "husky install"
   },
   "dependencies": {

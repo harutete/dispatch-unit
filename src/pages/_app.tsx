@@ -1,4 +1,4 @@
-import { AppProps } from 'next/app'
+import { AppProps } from 'next/app';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />;
