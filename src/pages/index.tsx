@@ -1,6 +1,8 @@
+import { Heading } from '../components/atoms/Heading'
+
 const Home = () => (
   <div>
-    <h1>Home</h1>
+    <Heading text="Dispatch unit" />
   </div>
 );
 
