@@ -1,4 +1,4 @@
-import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from '@apollo/client';
 
 import { client } from '../graphql/apollo-client';
 import { AppProps } from 'next/app';
