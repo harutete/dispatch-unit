@@ -1,0 +1,6 @@
+query getMembers {
+  members {
+    id
+    name
+  }
+}
