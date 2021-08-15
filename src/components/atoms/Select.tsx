@@ -4,7 +4,7 @@ type Props = {
     value: string;
   }[];
   defaultValue: string;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export const Select: React.FC<Props> = ({ items, defaultValue, onChange }) => (
