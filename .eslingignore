@@ -1,4 +1,4 @@
 !/.*
 /build/
 /test-config/
-/graphql/generated
+/src/graphql/generated
