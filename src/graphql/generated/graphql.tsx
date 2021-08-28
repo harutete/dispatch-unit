@@ -38,12 +38,12 @@ export type Query = {
 
 
 export type QueryLinkSkillsArgs = {
-  member?: Maybe<Scalars['String']>;
+  memberId?: Maybe<Scalars['Int']>;
   skill?: Maybe<Scalars['String']>;
 };
 
 export type GetLinkSkillsQueryVariables = Exact<{
-  member: Scalars['String'];
+  memberId: Scalars['Int'];
   skill: Scalars['String'];
 }>;
 
@@ -57,8 +57,8 @@ export type GetMembersQuery = { __typename?: 'Query', members?: Maybe<Array<Mayb
 
 
 export const GetLinkSkillsDocument = gql`
-    query getLinkSkills($member: String!, $skill: String!) {
-  linkSkills(member: $member, skill: $skill) {
+    query getLinkSkills($memberId: Int!, $skill: String!) {
+  linkSkills(memberId: $memberId, skill: $skill) {
     category
     category_name
     effect
@@ -84,7 +84,7 @@ export const GetLinkSkillsDocument = gql`
  * @example
  * const { data, loading, error } = useGetLinkSkillsQuery({
  *   variables: {
- *      member: // value for 'member'
+ *      memberId: // value for 'memberId'
  *      skill: // value for 'skill'
  *   },
  * });

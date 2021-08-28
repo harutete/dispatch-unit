@@ -1,5 +1,5 @@
-query getLinkSkills($member: String!, $skill: String!) {
-  linkSkills(member: $member, skill: $skill) {
+query getLinkSkills($memberId: Int!, $skill: String!) {
+  linkSkills(memberId: $memberId, skill: $skill) {
     category
     category_name
     effect
