@@ -9,7 +9,7 @@ export const Button: React.FC<Props> = ({
   type = 'button',
   onClick,
 }) => (
-  <button type={type} onClick={onClick}>
+  <button type={type} onClick={onClick} className="bg-red-500 rounded font-bold text-white p-2 w-full">
     {label}
   </button>
 );

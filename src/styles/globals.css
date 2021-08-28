@@ -3,10 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    font-size: 62.5%;
-  }
   body {
-    @apply text-2xl
+    @apply text-base;
+    @apply text-gray-800;
   }
 }

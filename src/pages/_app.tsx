@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 
 import { client } from '../graphql/apollo-client';
 
-import '../styles/globals.css'
+import '../styles/globals.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <ApolloProvider client={client}>
