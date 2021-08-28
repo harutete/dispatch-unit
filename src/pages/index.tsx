@@ -8,7 +8,7 @@ import { Heading01 } from '../components/atoms/Heading01';
 import { Heading02 } from '../components/atoms/Heading02';
 import { Select } from '../components/atoms/Select';
 import { Button } from '../components/atoms/Button';
-import { ErrorMessage } from '../components/atoms/ErrorMessage'
+import { ErrorMessage } from '../components/atoms/ErrorMessage';
 
 const SKILLS = [
   {
@@ -85,38 +85,38 @@ const Home = () => {
         </div>
       </div>
       {getLinkSkillsLoading && <p>loading...</p>}
-      {getLinkSkillsData && getLinkSkillsData.linkSkills &&
-      <>
-      {!getLinkSkillsData.linkSkills.length ? (<p>データなし</p>) :
-        (
-          <>
-            {getLinkSkillsData.linkSkills.map((item, index) => (
-              <div key={index}>
-                <Heading02 text={item.skill_name} />
-                {item.is_act2 && <p>Act2</p>}
-                <dl>
-                  <dt>category</dt>
-                  <dd>{item.category_name}%</dd>
-                  <dt>effect</dt>
-                  <dd>{item.effect}%</dd>
-                </dl>
-                <ul>
-                  {item.members.map((member) => (
-                    <li
-                      key={member.id}
-                      className={`text-${dispatchMemberClass(member.id)}`}
-                    >
-                      {member.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </>
-        )
-      }
-      </>
-      }
+      {getLinkSkillsData && getLinkSkillsData.linkSkills && (
+        <>
+          {!getLinkSkillsData.linkSkills.length ? (
+            <p>データなし</p>
+          ) : (
+            <>
+              {getLinkSkillsData.linkSkills.map((item, index) => (
+                <div key={index}>
+                  <Heading02 text={item.skill_name} />
+                  {item.is_act2 && <p>Act2</p>}
+                  <dl>
+                    <dt>category</dt>
+                    <dd>{item.category_name}</dd>
+                    <dt>effect</dt>
+                    <dd>{item.effect}%</dd>
+                  </dl>
+                  <ul>
+                    {item.members.map((member) => (
+                      <li
+                        key={member.id}
+                        className={`text-${dispatchMemberClass(member.id)}`}
+                      >
+                        {member.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </>
+          )}
+        </>
+      )}
     </div>
   );
 };
