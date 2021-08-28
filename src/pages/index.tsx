@@ -44,14 +44,14 @@ const Home = () => {
   }));
 
   const findMatchSkills = () => {
-    const { selectedValue: selectedMember } = selectMember;
+    const { selectedValue: selectedMemberId } = selectMember;
     const { selectedValue: selectedSkill } = selectSkill;
-    if (!selectedMember.length || !selectedSkill.length) {
+    if (!selectedMemberId || !selectedSkill.length) {
       return;
     }
     getLinkSkills({
       variables: {
-        member: selectedMember,
+        memberId: Number(selectedMemberId),
         skill: selectedSkill,
       },
     });
