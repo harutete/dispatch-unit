@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import {
   useGetMembersQuery,
   useGetLinkSkillsLazyQuery,
@@ -24,10 +26,12 @@ const SKILLS = [
     value: 'シリアス',
   },
 ];
+
 const Home = () => {
   const selectMember = useSelect('');
   const selectSkill = useSelect('');
-
+  const [isMemberNull, setIsMemberNull] = useState(false)
+  const [isSkillNull, setIsSkillNull] = useState(false)
   const { data: getMemberData, loading: getMemberDataLoading } =
     useGetMembersQuery();
   const [
@@ -35,20 +39,27 @@ const Home = () => {
     { data: getLinkSkillsData, loading: getLinkSkillsLoading },
   ] = useGetLinkSkillsLazyQuery();
 
-  if (getMemberDataLoading) {
-    return null;
+  const validateSelectedValue = (memberId: string, skill: string) => {
+    if (!memberId) {
+      setIsMemberNull(true);
+    } else {
+      setIsMemberNull(false);
+    }
+    if (!skill) {
+      setIsSkillNull(true);
+    } else {
+      setIsSkillNull(false);
+    }
   }
-  const formattedMembersData = getMemberData.members.map((member) => ({
-    id: member.id.toString(),
-    value: member.name,
-  }));
-
   const findMatchSkills = () => {
     const { selectedValue: selectedMemberId } = selectMember;
     const { selectedValue: selectedSkill } = selectSkill;
-    if (!selectedMemberId || !selectedSkill.length) {
-      return;
+
+    if (!selectedMemberId || !selectedSkill) {
+      validateSelectedValue(selectedMemberId, selectedSkill)
+      return
     }
+
     getLinkSkills({
       variables: {
         memberId: Number(selectedMemberId),
@@ -57,11 +68,21 @@ const Home = () => {
     });
   };
   const dispatchMemberClass = (memberId: number) =>
-    `member${memberId < 10 ? '0' : ''}${memberId}`;
+    `member-${memberId < 10 ? '0' : ''}${memberId}`;
+
+  if (getMemberDataLoading) {
+    return null;
+  }
+
+  const formattedMembersData = getMemberData.members.map((member) => ({
+    id: member.id.toString(),
+    value: member.name,
+  }));
+
   return (
     <div className="w-3/5 mx-auto">
       <Heading01 text="Dispatch unit" />
-      <div className="border rounded mt-4 p-4">
+      <div className="border rounded mt-4 p-4 space-y-4">
         <div className="space-y-2">
           <Heading02 text="Choose a member!" />
           <Select
@@ -69,18 +90,18 @@ const Home = () => {
             defaultValue="メンバーを選択"
             onChange={selectMember.onChange}
           />
-          <ErrorMessage message="※メンバーを選択してください" />
+          {isMemberNull && <ErrorMessage message="※メンバーを選択してください" />}
         </div>
-        <div className="mt-4 space-y-2">
+        <div className="space-y-2">
           <Heading02 text="Choose a skill!" />
           <Select
             items={SKILLS}
             defaultValue="スキルを選択"
             onChange={selectSkill.onChange}
           />
-          <ErrorMessage message="※スキルを選択してください" />
+          {isSkillNull && <ErrorMessage message="※スキルを選択してください" />}
         </div>
-        <div className="w-1/2 mt-4 mx-auto">
+        <div className="w-1/2 mx-auto">
           <Button label="Dispatch!" onClick={findMatchSkills} />
         </div>
       </div>
