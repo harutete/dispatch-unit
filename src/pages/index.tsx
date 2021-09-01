@@ -116,43 +116,41 @@ const Home = () => {
             <p>データなし</p>
           ) : (
             <>
-              {sortedLinkSkills(getLinkSkillsData).map(
-                (item, index) => (
-                  <div
-                    key={index}
-                    className="rounded bg-gray-100 bg-opacity-50 mt-4 p-4"
-                  >
-                    <div className="flex items-center justify-between rounded bg-gray-200 p-2">
-                      <ResultHeading02 text={item.skill_name} />
-                      {item.is_act2 && (
-                        <p className="rounded-full bg-gray-600 text-white py-1 px-4">
-                          Act2
-                        </p>
-                      )}
-                    </div>
-                    <dl className="space-y-2">
-                      <div className="flex space-x-2 mt-2">
-                        <dt>category</dt>
-                        <dd>{item.category_name}</dd>
-                      </div>
-                      <div className="flex space-x-2">
-                        <dt>effect</dt>
-                        <dd>{item.effect}%</dd>
-                      </div>
-                    </dl>
-                    <ul className="flex space-x-2 mt-2">
-                      {item.members.map((member) => (
-                        <li
-                          key={member.id}
-                          className={`text-${dispatchMemberClass(member.id)}`}
-                        >
-                          {member.name}
-                        </li>
-                      ))}
-                    </ul>
+              {sortedLinkSkills(getLinkSkillsData).map((item, index) => (
+                <div
+                  key={index}
+                  className="rounded bg-gray-100 bg-opacity-50 mt-4 p-4"
+                >
+                  <div className="flex items-center justify-between rounded bg-gray-200 p-2">
+                    <ResultHeading02 text={item.skill_name} />
+                    {item.is_act2 && (
+                      <p className="rounded-full bg-gray-600 text-white py-1 px-4">
+                        Act2
+                      </p>
+                    )}
                   </div>
-                )
-              )}
+                  <dl className="space-y-2">
+                    <div className="flex space-x-2 mt-2">
+                      <dt>category</dt>
+                      <dd>{item.category_name}</dd>
+                    </div>
+                    <div className="flex space-x-2">
+                      <dt>effect</dt>
+                      <dd>{item.effect}%</dd>
+                    </div>
+                  </dl>
+                  <ul className="flex space-x-2 mt-2">
+                    {item.members.map((member) => (
+                      <li
+                        key={member.id}
+                        className={`text-${dispatchMemberClass(member.id)}`}
+                      >
+                        {member.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </>
           )}
         </>
