@@ -1,6 +1,4 @@
-import {
-  GetLinkSkillsQuery,
-} from '../graphql/generated/graphql';
+import { GetLinkSkillsQuery } from '../graphql/generated/graphql';
 
 export const sortedLinkSkills = ({
   linkSkills,
