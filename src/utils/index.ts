@@ -1,4 +1,4 @@
-import { LinkSkills } from '../types';
+import { GetLinkSkillsQuery, useGetLinkSkillsQuery } from '../graphql/generated/graphql';
 
-export const sortedLinkSkills = (linkSkills: LinkSkills[]) =>
-  [...linkSkills].sort((a: LinkSkills, b: LinkSkills) => b.effect - a.effect);
+export const sortedLinkSkills = ({ linkSkills }: Pick<GetLinkSkillsQuery, 'linkSkills'>) =>
+  [...linkSkills].sort((a, b) => b.effect - a.effect);

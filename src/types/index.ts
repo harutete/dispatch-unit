@@ -3,6 +3,7 @@ export interface Members {
   name: string;
 }
 export interface LinkSkills {
+  __typename?: string;
   category: string;
   category_name: string;
   effect: number;

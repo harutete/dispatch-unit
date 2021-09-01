@@ -116,7 +116,7 @@ const Home = () => {
             <p>データなし</p>
           ) : (
             <>
-              {sortedLinkSkills(getLinkSkillsData.linkSkills).map(
+              {sortedLinkSkills(getLinkSkillsData).map(
                 (item, index) => (
                   <div
                     key={index}
