@@ -70,7 +70,7 @@ const Home = () => {
     });
   };
   const dispatchMemberClass = (memberId: number) =>
-    `member${memberId < 10 ? '0' : ''}${memberId}`;
+    `member-${memberId < 10 ? '0' : ''}${memberId}`;
 
   if (getMemberDataLoading) {
     return null;
@@ -143,7 +143,7 @@ const Home = () => {
                     {item.members.map((member) => (
                       <li
                         key={member.id}
-                        className={`text-${dispatchMemberClass(member.id)}`}
+                        className={`bg-${dispatchMemberClass(member.id)} rounded text-white py-1 px-2`}
                       >
                         {member.name}
                       </li>
