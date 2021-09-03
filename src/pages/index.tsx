@@ -14,6 +14,8 @@ import { Button } from '../components/atoms/Button';
 import { ErrorMessage } from '../components/atoms/ErrorMessage';
 import { ResultHeading02 } from '../components/atoms/ResultHeading02';
 
+import { SelectConditionsForm } from '../components/organisms/SelectConditionsForm'
+
 const SKILLS = [
   {
     id: 'comedy',
@@ -84,31 +86,7 @@ const Home = () => {
   return (
     <div className="w-3/5 mx-auto">
       <Heading01 text="Dispatch unit" />
-      <div className="border rounded mt-4 p-4 space-y-4">
-        <div className="space-y-2">
-          <Heading02 text="Choose a member!" />
-          <Select
-            items={formattedMembersData}
-            defaultValue="メンバーを選択"
-            onChange={selectMember.onChange}
-          />
-          {isMemberNull && (
-            <ErrorMessage message="※メンバーを選択してください" />
-          )}
-        </div>
-        <div className="space-y-2">
-          <Heading02 text="Choose a skill!" />
-          <Select
-            items={SKILLS}
-            defaultValue="スキルを選択"
-            onChange={selectSkill.onChange}
-          />
-          {isSkillNull && <ErrorMessage message="※スキルを選択してください" />}
-        </div>
-        <div className="w-1/2 mx-auto">
-          <Button label="Dispatch!" onClick={findMatchSkills} />
-        </div>
-      </div>
+      <SelectConditionsForm members={formattedMembersData} handleMemberChange={selectMember.onChange} isMemberError={isMemberNull} skills={SKILLS} handleSkillChange={selectSkill.onChange} isSkillError={isSkillNull} handleFindMatchLinkSkill={findMatchSkills} />
       {getLinkSkillsLoading && <p>loading...</p>}
       {getLinkSkillsData && getLinkSkillsData.linkSkills && (
         <>
@@ -143,7 +121,9 @@ const Home = () => {
                     {item.members.map((member) => (
                       <li
                         key={member.id}
-                        className={`bg-${dispatchMemberClass(member.id)} rounded text-white py-1 px-2`}
+                        className={`bg-${dispatchMemberClass(
+                          member.id
+                        )} rounded text-white py-1 px-2`}
                       >
                         {member.name}
                       </li>
