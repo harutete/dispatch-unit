@@ -8,13 +8,10 @@ import { useSelect } from '../hooks/useSelect';
 import { sortedLinkSkills } from '../utils';
 
 import { Heading01 } from '../components/atoms/Heading01';
-import { Heading02 } from '../components/atoms/Heading02';
-import { Select } from '../components/atoms/Select';
-import { Button } from '../components/atoms/Button';
 import { ErrorMessage } from '../components/atoms/ErrorMessage';
-import { ResultHeading02 } from '../components/atoms/ResultHeading02';
 
 import { SelectConditionsForm } from '../components/organisms/SelectConditionsForm';
+import { ResultLinkSkillList } from '../components/organisms/ResultLinkSkillList';
 
 const SKILLS = [
   {
@@ -71,8 +68,6 @@ const Home = () => {
       },
     });
   };
-  const dispatchMemberClass = (memberId: number) =>
-    `member-${memberId < 10 ? '0' : ''}${memberId}`;
 
   if (getMemberDataLoading) {
     return null;
@@ -99,47 +94,13 @@ const Home = () => {
       {getLinkSkillsData && getLinkSkillsData.linkSkills && (
         <>
           {!getLinkSkillsData.linkSkills.length ? (
-            <p>データなし</p>
+            <div className="mt-4">
+              <ErrorMessage message="データなし" />
+            </div>
           ) : (
-            <>
-              {sortedLinkSkills(getLinkSkillsData).map((item, index) => (
-                <div
-                  key={index}
-                  className="rounded bg-gray-100 bg-opacity-50 mt-4 p-4"
-                >
-                  <div className="flex items-center justify-between rounded bg-gray-200 p-2">
-                    <ResultHeading02 text={item.skill_name} />
-                    {item.is_act2 && (
-                      <p className="rounded-full bg-gray-600 text-white py-1 px-4">
-                        Act2
-                      </p>
-                    )}
-                  </div>
-                  <dl className="space-y-2">
-                    <div className="flex space-x-2 mt-2">
-                      <dt>category</dt>
-                      <dd>{item.category_name}</dd>
-                    </div>
-                    <div className="flex space-x-2">
-                      <dt>effect</dt>
-                      <dd>{item.effect}%</dd>
-                    </div>
-                  </dl>
-                  <ul className="flex space-x-2 mt-2">
-                    {item.members.map((member) => (
-                      <li
-                        key={member.id}
-                        className={`bg-${dispatchMemberClass(
-                          member.id
-                        )} rounded text-white py-1 px-2`}
-                      >
-                        {member.name}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </>
+            sortedLinkSkills(getLinkSkillsData).map((item, index) => (
+              <ResultLinkSkillList results={item} key={index} />
+            ))
           )}
         </>
       )}
