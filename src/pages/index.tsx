@@ -92,17 +92,15 @@ const Home = () => {
       />
       {getLinkSkillsLoading && <p>loading...</p>}
       {getLinkSkillsData && getLinkSkillsData.linkSkills && (
-        <>
+        <div className="mt-4">
           {!getLinkSkillsData.linkSkills.length ? (
-            <div className="mt-4">
-              <ErrorMessage message="データなし" />
-            </div>
+            <ErrorMessage message="データなし" />
           ) : (
             sortedLinkSkills(getLinkSkillsData).map((item, index) => (
               <ResultLinkSkillList results={item} key={index} />
             ))
           )}
-        </>
+        </div>
       )}
     </div>
   );
