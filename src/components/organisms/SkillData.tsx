@@ -1,7 +1,7 @@
 type Props = {
-  categoryName: string
-  effect: number
-}
+  categoryName: string;
+  effect: number;
+};
 
 export const SkillData: React.FC<Props> = ({ categoryName, effect }) => (
   <dl className="space-y-2">
@@ -14,4 +14,4 @@ export const SkillData: React.FC<Props> = ({ categoryName, effect }) => (
       <dd>{effect}%</dd>
     </div>
   </dl>
-)
+);

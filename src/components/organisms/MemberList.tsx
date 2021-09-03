@@ -1,13 +1,13 @@
 type Props = {
   members: {
-    id?: number
-    name?: string
-  }[]
-}
+    id?: number;
+    name?: string;
+  }[];
+};
 
 export const MemberList: React.FC<Props> = ({ members }) => {
   const dispatchMemberClass = (memberId: number) =>
-  `member-${memberId < 10 ? '0' : ''}${memberId}`;
+    `member-${memberId < 10 ? '0' : ''}${memberId}`;
 
   return (
     <ul className="flex space-x-2 mt-2">
@@ -22,5 +22,5 @@ export const MemberList: React.FC<Props> = ({ members }) => {
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
