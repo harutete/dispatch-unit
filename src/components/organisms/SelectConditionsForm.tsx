@@ -4,18 +4,18 @@ import { Button } from '../atoms/Button';
 import { ErrorMessage } from '../atoms/ErrorMessage';
 
 type SelectItem = {
-  id: string
-  value: string
-}
+  id: string;
+  value: string;
+};
 type Props = {
-  members: SelectItem[]
-  handleMemberChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
-  isMemberError: boolean
-  skills: SelectItem[]
-  handleSkillChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
-  isSkillError: boolean
-  handleFindMatchLinkSkill: () => void
-}
+  members: SelectItem[];
+  handleMemberChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  isMemberError: boolean;
+  skills: SelectItem[];
+  handleSkillChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  isSkillError: boolean;
+  handleFindMatchLinkSkill: () => void;
+};
 
 export const SelectConditionsForm: React.FC<Props> = ({
   members,
@@ -24,7 +24,7 @@ export const SelectConditionsForm: React.FC<Props> = ({
   skills,
   handleSkillChange,
   isSkillError,
-  handleFindMatchLinkSkill
+  handleFindMatchLinkSkill,
 }) => (
   <div className="border rounded mt-4 p-4 space-y-4">
     <div className="space-y-2">
@@ -34,9 +34,7 @@ export const SelectConditionsForm: React.FC<Props> = ({
         defaultValue="メンバーを選択"
         onChange={handleMemberChange}
       />
-      {isMemberError && (
-        <ErrorMessage message="※メンバーを選択してください" />
-      )}
+      {isMemberError && <ErrorMessage message="※メンバーを選択してください" />}
     </div>
     <div className="space-y-2">
       <Heading02 text="Choose a skill!" />
@@ -51,4 +49,4 @@ export const SelectConditionsForm: React.FC<Props> = ({
       <Button label="Dispatch!" onClick={handleFindMatchLinkSkill} />
     </div>
   </div>
-)
+);

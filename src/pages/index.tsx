@@ -14,7 +14,7 @@ import { Button } from '../components/atoms/Button';
 import { ErrorMessage } from '../components/atoms/ErrorMessage';
 import { ResultHeading02 } from '../components/atoms/ResultHeading02';
 
-import { SelectConditionsForm } from '../components/organisms/SelectConditionsForm'
+import { SelectConditionsForm } from '../components/organisms/SelectConditionsForm';
 
 const SKILLS = [
   {
@@ -86,7 +86,15 @@ const Home = () => {
   return (
     <div className="w-3/5 mx-auto">
       <Heading01 text="Dispatch unit" />
-      <SelectConditionsForm members={formattedMembersData} handleMemberChange={selectMember.onChange} isMemberError={isMemberNull} skills={SKILLS} handleSkillChange={selectSkill.onChange} isSkillError={isSkillNull} handleFindMatchLinkSkill={findMatchSkills} />
+      <SelectConditionsForm
+        members={formattedMembersData}
+        handleMemberChange={selectMember.onChange}
+        isMemberError={isMemberNull}
+        skills={SKILLS}
+        handleSkillChange={selectSkill.onChange}
+        isSkillError={isSkillNull}
+        handleFindMatchLinkSkill={findMatchSkills}
+      />
       {getLinkSkillsLoading && <p>loading...</p>}
       {getLinkSkillsData && getLinkSkillsData.linkSkills && (
         <>
